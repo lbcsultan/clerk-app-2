@@ -8,12 +8,7 @@ export default async function Repo({ name }: RepoProps) {
   const username = githubuser
   await new Promise((resolve) => setTimeout(resolve, 1000))
   const response = await fetch(
-    `https://api.github.com/repos/${username}/${name}`,
-    {
-      headers: {
-        Authorization: `token ${process.env.GITHUB_ACCESS_TOKEN}`,
-      },
-    }
+    `https://api.github.com/repos/${username}/${name}` 
   )
   const repo = await response.json()
   // console.log(repo)
