@@ -10,12 +10,7 @@ export default async function RepoDirs({ name }: RepoProps) {
   const username = githubuser
   await new Promise((resolve) => setTimeout(resolve, 2000))
   const response = await fetch(
-    `https://api.github.com/repos/${username}/${name}/contents`,
-    {
-      headers: {
-        Authorization: `token ${process.env.GITHUB_ACCESS_TOKEN}`,
-      },
-    }
+    `https://api.github.com/repos/${username}/${name}/contents`
   )
   const contents: GitHubContent[] = await response.json()
   const dirs = contents.filter((content) => content.type === 'dir')
